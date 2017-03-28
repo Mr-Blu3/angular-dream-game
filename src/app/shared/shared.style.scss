@@ -1,0 +1,38 @@
+$c_darkBlue: #012345;
+$c_lightDarkBlue: #123456;
+$c_lighterBlue: #234567;
+$c_seaBlue: #345678;
+$c_oceanBlue: #456789;
+
+$c_white: #fff;
+$c_black: #000;
+
+.table-striped{
+  color: $c_white;
+  thead {
+    tr:nth-of-type(odd){
+      background: $c_oceanBlue;
+    }
+    tr:nth-of-type(even){
+      background: $c_darkBlue;
+    }
+
+  }
+  tbody {
+    tr:nth-of-type(odd) {
+      background: $c_oceanBlue;
+    }
+    tr:nth-of-type(even) {
+      background: $c_darkBlue;
+    }
+    tr:hover {
+      background:$c_lighterBlue;
+    }
+  }
+  i {
+    cursor: pointer;
+    font-size: 18px;
+  }
+}
+
+

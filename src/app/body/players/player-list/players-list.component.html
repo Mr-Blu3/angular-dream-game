@@ -1,0 +1,34 @@
+<p-growl [value]="msgs"></p-growl>
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th colspan="5">Players List</th>
+    </tr>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Position</th>
+      <th>Width</th>
+      <th>Height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let player of listOfPlayers.players | paginate: { itemsPerPage: 10, currentPage: p }" (click)="getProfile(player)" [ngClass]="{'bg-info': playerProfile === player }">
+      <td>{{player.firstName}}</td>
+      <td>{{player.lastName}}</td>
+      <td>{{player.position}}</td>
+      <td>{{player.width}}</td>
+      <td>{{player.height}}</td>
+    </tr>
+
+    <tr>
+      <td colspan="5">
+        <a class="text-white" routerLink="/teams">Go To Teams</a>
+        <div class="float-right"><pagination-controls (pageChange)="p = $event"></pagination-controls></div>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+<app-profile *ngIf="playerProfile" [header]="playerProfile.firstName + ' ' + playerProfile.lastName" [profile]="{ Position : playerProfile.position, Lose: playerProfile.width, Behind : playerProfile.height}"></app-profile>

@@ -1,0 +1,34 @@
+<p-growl [value]="msgs"></p-growl>
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+  <tr><th colspan="6">Teams</th></tr>
+  <tr>
+    <th>Team Name</th>
+    <th>Num Of Wins</th>
+    <th>Num Of Lose</th>
+    <th>Win Rate</th>
+    <th colspan="2">Games Behind</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let team of listOfTeams.teams | paginate: { itemsPerPage: 10, currentPage: p }" (click)="getProfile(team)" [ngClass]="{'bg-info': teamProfile === team }">
+      <td>{{team.teamName}}</td>
+      <td>{{team.numberOfWins}}</td>
+      <td>{{team.numberOfLose}}</td>
+      <td>{{team.winPercentage}} %</td>
+      <td>{{team.gamesBehind}}</td>
+      <td class="text-center">
+        <a><i class="fa fa-edit"></i></a>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="5">
+        <a class="text-white" routerLink="/players">Go To Players</a>
+        <div class="float-right"><pagination-controls (pageChange)="p = $event"></pagination-controls></div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<app-profile *ngIf="teamProfile" [header]="teamProfile.teamName"
+             [profile]="{ Wins : teamProfile.numberOfWins, Lose: teamProfile.numberOfLose, Behind : teamProfile.gamesBehind}"></app-profile>
