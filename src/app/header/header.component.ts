@@ -12,9 +12,7 @@ import { Component, OnInit } from '@angular/core';
       <div ngbDropdown class="float-right">
         <button class="btn btn-secondary" id="dropdownMenu1" ngbDropdownToggle>Meny</button>
         <div class="dropdown-menu dropdown-menu-right text-center" style="max-width: 160px" aria-labelledby="dropdownMenu1">
-          <button class="dropdown-item text-truncate" routerLinkActive="bg-faded"><a routerLink="/">Game Board</a></button>
-          <button class="dropdown-item text-truncate" routerLinkActive="bg-faded"><a routerLink="teams">Teams</a></button>
-          <button class="dropdown-item text-truncate" routerLinkActive="bg-faded"><a routerLink="players">Players</a></button>
+          <button *ngFor="let link of navLinks" class="dropdown-item text-truncate" routerLinkActive="bg-faded"><a routerLink="{{link.url}}">{{link.name}}</a></button>
         </div>
       </div>
     </div>
@@ -23,6 +21,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  navLinks: Object[] = [
+    {url: '/', name:'Game Board'},
+    {url: 'players',name:'Teams'},
+    {url: 'teams', name:'Players'},
+    {url: 'register', name:'Register'}
+  ];
 
   constructor() { }
 

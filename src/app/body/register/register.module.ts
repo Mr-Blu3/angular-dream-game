@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
-import {TeamRouting} from "./team.routing";
+import {RegisterRouting} from "./register.routing";
 import {CommonModule} from "@angular/common";
-import {TeamListComponent} from "./team-list/team-list.component";
+import {RegisterComponent} from "./register-list/register.component";
 import {sharedModule} from "../../shared/shared.module";
 
 @NgModule({
   imports: [
     CommonModule,
-    TeamRouting,
+    RegisterRouting,
     sharedModule
   ],
   declarations: [
-    TeamListComponent
+    RegisterComponent
   ]
 })
-export class TeamModule {}
+export class RegisterModule {}

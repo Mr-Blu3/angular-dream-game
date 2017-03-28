@@ -5,6 +5,8 @@ import {PlayersListComponent} from "./body/players/player-list/players-list.comp
 const routes: Routes = [
   {path: 'teams', loadChildren: 'app/body/teams/team.module#TeamModule'},
   {path: 'players', loadChildren: 'app/body/players/player.module#PlayerModule'},
+  {path: 'register/team', loadChildren: 'app/body/register/register.module#RegisterModule'},
+  {path: 'register/player', loadChildren: 'app/body/register/register.module#RegisterModule'},
   {path: '', component: PlayersListComponent},
 ];
 

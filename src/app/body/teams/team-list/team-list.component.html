@@ -7,28 +7,31 @@
     <th>Num Of Wins</th>
     <th>Num Of Lose</th>
     <th>Win Rate</th>
-    <th colspan="2">Games Behind</th>
+    <th>Games Behind</th>
+    <th class="text-center">Edit</th>
   </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let team of listOfTeams.teams | paginate: { itemsPerPage: 10, currentPage: p }" (click)="getProfile(team)" [ngClass]="{'bg-info': teamProfile === team }">
-      <td>{{team.teamName}}</td>
-      <td>{{team.numberOfWins}}</td>
-      <td>{{team.numberOfLose}}</td>
-      <td>{{team.winPercentage}} %</td>
-      <td>{{team.gamesBehind}}</td>
+    <tr *ngFor="let team of listOfTeams.teams | paginate: { itemsPerPage: 10, currentPage: p }" [ngClass]="{'bg-info': teamProfile === team }">
+      <td (click)="getProfile(team)">{{team.teamName}} <br /> <input [(ngModel)]="team.teamName" name="teamName" *ngIf="saveShow === team" type="text" [value]="team.teamName"></td>
+      <td (click)="getProfile(team)">{{team.numberOfWins}} <br/> <input [(ngModel)]="team.numberOfWins" name="numWins" *ngIf="saveShow === team" type="text" [value]="team.numberOfWins"></td>
+      <td (click)="getProfile(team)">{{team.numberOfLose}} <br /> <input [(ngModel)]="team.numberOfLose" name="numOfLose" *ngIf="saveShow === team" type="text" [value]="team.numberOfLose"></td>
+      <td (click)="getProfile(team)">{{team.winPercentage}} % <br /> </td>
+      <td (click)="getProfile(team)">{{team.gamesBehind}} <br /> <input [(ngModel)]="team.gamesBehind" name="gamesBehind" *ngIf="saveShow === team" type="text" [value]="team.gamesBehind"></td>
       <td class="text-center">
-        <a><i class="fa fa-edit"></i></a>
+        <a><i (click)="editProfile(team)" class="fa fa-edit"></i></a>
+        <a><i (click)="saveProfile()" *ngIf="saveShow === team" class="fa fa-check-square"></i></a>
       </td>
     </tr>
 
     <tr>
-      <td colspan="5">
+      <td colspan="6">
         <a class="text-white" routerLink="/players">Go To Players</a>
         <div class="float-right"><pagination-controls (pageChange)="p = $event"></pagination-controls></div>
       </td>
     </tr>
   </tbody>
 </table>
+
 <app-profile *ngIf="teamProfile" [header]="teamProfile.teamName"
              [profile]="{ Wins : teamProfile.numberOfWins, Lose: teamProfile.numberOfLose, Behind : teamProfile.gamesBehind}"></app-profile>

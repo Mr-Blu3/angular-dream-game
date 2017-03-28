@@ -28,10 +28,15 @@ $c_black: #000;
     tr:hover {
       background:$c_lighterBlue;
     }
-  }
-  i {
-    cursor: pointer;
-    font-size: 18px;
+    i {
+      cursor: pointer;
+      font-size: 18px;
+    }
+    input {
+      outline: none;
+      background: none;
+      color: $c_white;
+    }
   }
 }
 

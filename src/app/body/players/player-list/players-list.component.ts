@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgbPaginationConfig} from '@ng-bootstrap/ng-bootstrap';
 
 import {PlayerClass} from '../../../shared/players/classes/players';
-import {RestApiService} from "../../../shared/restApi.service";
+import {RestApiService} from "../../../shared/services/restApi.service";
 import {Message} from "primeng/components/common/api";
 import {PlayerInterface} from "../../../shared/players/interfaces/players";
 
