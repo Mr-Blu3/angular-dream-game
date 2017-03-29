@@ -2,7 +2,10 @@
 <table class="table table-bordered table-striped table-hover">
   <thead>
     <tr>
-      <th colspan="5">Players List</th>
+      <th colspan="4">Players List</th>
+      <th>
+        <input class="form-control w-75" #search type="search" (keyup)="searchBox(search.value)" placeholder="Search Game Stats" />
+      </th>
     </tr>
     <tr>
       <th>First Name</th>
@@ -13,7 +16,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let player of listOfPlayers.players | paginate: { itemsPerPage: 10, currentPage: p }" (click)="getProfile(player)" [ngClass]="{'bg-info': playerProfile === player }">
+    <tr *ngFor="let player of listOfPlayers.players | search: terms | paginate: { itemsPerPage: 10, currentPage: p }" (click)="getProfile(player)" [ngClass]="{'bg-info': playerProfile === player }">
       <td>{{player.firstName}}</td>
       <td>{{player.lastName}}</td>
       <td>{{player.position}}</td>

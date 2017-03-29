@@ -1,7 +1,12 @@
 <p-growl [value]="msgs"></p-growl>
 <table class="table table-bordered table-striped table-hover">
   <thead>
-  <tr><th colspan="6">Teams</th></tr>
+  <tr>
+    <th colspan="5">Teams</th>
+    <th>
+      <input class="form-control w-75" #search type="search" (keyup)="searchBox(search.value)" placeholder="Search Game Stats" />
+    </th>
+  </tr>
   <tr>
     <th>Team Name</th>
     <th>Num Of Wins</th>
@@ -12,7 +17,7 @@
   </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let team of listOfTeams.teams | paginate: { itemsPerPage: 10, currentPage: p }" [ngClass]="{'bg-info': teamProfile === team }">
+    <tr *ngFor="let team of listOfTeams.teams | search: term | paginate: { itemsPerPage: 10, currentPage: p }" [ngClass]="{'bg-info': teamProfile === team }">
       <td (click)="getProfile(team)">{{team.teamName}} <br /> <input [(ngModel)]="team.teamName" name="teamName" *ngIf="saveShow === team" type="text" [value]="team.teamName"></td>
       <td (click)="getProfile(team)">{{team.numberOfWins}} <br/> <input [(ngModel)]="team.numberOfWins" name="numWins" *ngIf="saveShow === team" type="text" [value]="team.numberOfWins"></td>
       <td (click)="getProfile(team)">{{team.numberOfLose}} <br /> <input [(ngModel)]="team.numberOfLose" name="numOfLose" *ngIf="saveShow === team" type="text" [value]="team.numberOfLose"></td>

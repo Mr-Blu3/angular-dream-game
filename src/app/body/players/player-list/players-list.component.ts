@@ -17,6 +17,7 @@ export class PlayersListComponent implements OnInit {
   private listOfPlayers: PlayerClass;
   private playerProfile: PlayerInterface;
   private msgs: Message[] = [];
+  private terms = "";
 
   constructor(private restApiService: RestApiService, config: NgbPaginationConfig) {
     config.size = 'lg';
@@ -33,5 +34,9 @@ export class PlayersListComponent implements OnInit {
     this.msgs.push({severity:'info', summary:'Selected:', detail: `First Name: ${player.firstName}<br> Last Name: ${player.lastName}`});
   }
 
+  searchBox(search: string)
+  {
+    this.terms = search;
+  }
 }
 

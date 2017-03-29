@@ -15,7 +15,7 @@ export class TeamListComponent implements OnInit {
   private listOfTeams: TeamClass;
   private teamProfile: TeamInterface;
   private msgs: Message[] = [];
-
+  private term = "";
   private saveShow: TeamInterface;
 
   constructor(private restApiService: RestApiService, private profileService: ProfileService) {}
@@ -45,5 +45,9 @@ export class TeamListComponent implements OnInit {
     this.msgs = [];
     this.msgs.push({severity:'success', summary:'Selected:', detail: `Saved Profile`});
     this.saveShow = undefined;
+  }
+
+  searchBox(term: string) {
+    this.term = term;
   }
 }
